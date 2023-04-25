@@ -77,32 +77,32 @@ public class SceneGraph extends JPanel {
         Bars[2].setRotation(-22.5).setScale(1.5, 0.08).setTranslation(1.5, 1.8).setColor(Color.RED);
         world.add(Bars[2]);
 
-        Shapes[0] = new TransformedObject(shape);
+        Shapes[0] = new TransformedObject(hexagon);
         Shapes[0].setScale(0.3, 0.3).setTranslation(-0.889, -0.42);
         world.add(Shapes[0]);
 
-        Shapes[1] = new TransformedObject(shape);
+        Shapes[1] = new TransformedObject(hexagon);
         Shapes[1].setScale(0.3, 0.3).setTranslation(0.899, -1.189);
         world.add(Shapes[1]);
 
-        Shapes[2] = new TransformedObject(shape);
+        Shapes[2] = new TransformedObject(hexagon);
         Shapes[2].setScale(0.25, 0.25).setTranslation(-3, 1.825);
         world.add(Shapes[2]);
 
-        Shapes[3] = new TransformedObject(shape);
+        Shapes[3] = new TransformedObject(hexagon);
         Shapes[3].setScale(0.25, 0.25).setTranslation(-1.4, 1.18);
         world.add(Shapes[3]);
 
-        Shapes[4] = new TransformedObject(shape);
+        Shapes[4] = new TransformedObject(hexagon);
         Shapes[4].setScale(0.2, 0.2).setTranslation(0.83, 2.07);
         world.add(Shapes[4]);
 
-        Shapes[5] = new TransformedObject(shape);
+        Shapes[5] = new TransformedObject(hexagon);
         Shapes[5].setScale(0.2, 0.2).setTranslation(2.16, 1.52);
         world.add(Shapes[5]);
     }
 
-    private static SceneGraphNode shape = new SceneGraphNode() {
+    private static SceneGraphNode hexagon = new SceneGraphNode() {
         void doDraw(Graphics2D g) {
             int n = 13;
             double angle = (Math.PI * 2) / n;
