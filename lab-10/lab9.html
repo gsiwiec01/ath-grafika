@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.115/build/three.js"></script>
+    <style>
+        body {margin: 0;}
+        canvas {width: 100%;  height: 100%;}
+    </style>
+    <script src="https://threejs.org/build/three.js"></script>
+</head>
+<body>
+<script>
+    // Inicjalizacja sceny, kamery i renderera
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Tworzenie geometrii konia
+    const baseGeometry = new THREE.CylinderGeometry(0.4, 0.4, 0.2, 32);
+    const bodyGeometry = new THREE.CylinderGeometry(0.4, 0.3, 0.8, 32);
+    const headGeometry = new THREE.CylinderGeometry(0.3, 0.5, 0.6, 32);
+    const earGeometry = new THREE.ConeGeometry(0.15, 0.4, 32);
+    const eyeGeometry = new THREE.SphereGeometry(0.05, 32, 32);
+
+    // Tworzenie materiałów dla konia
+    const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+    // Tworzenie siatki dla poszczególnych części konia
+    const base = new THREE.Mesh(baseGeometry, material);
+    const body = new THREE.Mesh(bodyGeometry, material);
+    const head = new THREE.Mesh(headGeometry, material);
+    const leftEar = new THREE.Mesh(earGeometry, material);
+    const rightEar = new THREE.Mesh(earGeometry, material);
+    const leftEye = new THREE.Mesh(eyeGeometry, material);
+    const rightEye = new THREE.Mesh(eyeGeometry, material);
+
+    // Ustawienie pozycji poszczególnych części konia
+    base.position.y = 0.3;
+    body.position.y = 0.7;
+    head.position.y = 1.35;
+    leftEar.position.set(-0.2, 1.5, 0.2);
+    rightEar.position.set(0.2, 1.5, 0.2);
+    leftEye.position.set(-0.15, 1.4, 0.35);
+    rightEye.position.set(0.15, 1.4, 0.35);
+
+    // Dodanie poszczególnych części konia do sceny
+    scene.add(base);
+    scene.add(body);
+    scene.add(head);
+    scene.add(leftEar);
+    scene.add(rightEar);
+    scene.add(leftEye);
+    scene.add(rightEye);
+
+    // Ustawienie pozycji i rotacji kamery
+    camera.position.z = 5;
+    camera.position.y = 2;
+    camera.rotation.x = -Math.PI / 6;
+
+    // Funkcja renderująca scenę
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    // Wywołanie funkcji animacji
+    animate();
+
+</script>
+</body>
+</html>
